@@ -151,3 +151,11 @@ def calculer_centroide(*args):
     TODO: À être implémenté par les étudiants.
     """
     raise NotImplementedError("Cette fonction n'est pas implémentée")
+
+def calculer_difference(image, image_2):
+    distance = 0
+    for i in range(0, len(image)):
+        for j in range(0, len(image[0])):
+            distance += (abs(image[i, j] - image_2[i, j]))
+
+    return distance
