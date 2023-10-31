@@ -1,4 +1,3 @@
-
 # Librairies générales
 import numpy as np
 import os
@@ -151,6 +150,7 @@ def calculer_centroide(*args):
     TODO: À être implémenté par les étudiants.
     """
     raise NotImplementedError("Cette fonction n'est pas implémentée")
+
 
 def calculer_difference(image, image_2):
     distance = 0
