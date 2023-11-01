@@ -29,6 +29,7 @@ def charger_centroides_reference(*args):
 
 
 
+
 def charger_etiquettes():
 
     return list
