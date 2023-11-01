@@ -1,4 +1,3 @@
-
 # Librairies générales
 import time
 
@@ -11,33 +10,33 @@ from algorithme.algorithme import *
 
 
 def test_identifier_caractere_distances():
-#    """
-#    Test pour l'identification des caractère sur le jeu de caractères de référence basé sur les distances.
-#    """
-#
-#    # Charger les images de référence
+    #    """
+    #    Test pour l'identification des caractère sur le jeu de caractères de référence basé sur les distances.
+    #    """
+    #
+    #    # Charger les images de référence
     references = charger_references()
-#
-#    # Marquer le début du test
+    #
+    #    # Marquer le début du test
     debut = time.time()
-#
-#    # Identifier chacun des caractères
+    #
+    #    # Identifier chacun des caractères
     for caractere in references:
-#
-#        # Identifier le caractère courant
+        #
+        #        # Identifier le caractère courant
         caractere_identifie = identifier_caracteres_avec_distances(references[caractere], references)
-#
-#        # Valider que le caractère courant correspond à la clé du dictionnaire de références
+    #
+    #        # Valider que le caractère courant correspond à la clé du dictionnaire de références
     assert str(caractere_identifie) == caractere
 #
 #    # Calculer la durée du test
-duree = time.time() - debut
+# duree = time.time() - debut
 #
 #    # Afficher la durée du test
 #    print(f'Durée: {duree} seconds')
 #
 #
-#def test_lire_etiquette_distances():
+# def test_lire_etiquette_distances():
 #    """
 #    Test pour la lecture d'une étiquette avec l'identification des caractères basée sur la distance.
 #    """
@@ -48,7 +47,7 @@ duree = time.time() - debut
 #    assert lire_etiquette_distances(etiquettes[0], references) == 'ASSYA20020202'
 #
 #
-#def test_integration_1():
+# def test_integration_1():
 #    """
 #    Test d'intégration qui consiste à l'identification basé sur la minimisation de la distance.
 #    """
@@ -72,7 +71,7 @@ duree = time.time() - debut
 #        i += 1
 #
 #
-#def test_identifier_caractere_centroides():
+# def test_identifier_caractere_centroides():
 #    """
 #    Test pour l'identification des caractère sur le jeu de caractères de référence basé sur les distances des
 #    centroïdes.
@@ -103,7 +102,7 @@ duree = time.time() - debut
 #    print(f'Durée: {duree} seconds')
 #
 #
-#def test_lire_etiquette_centroides():
+# def test_lire_etiquette_centroides():
 #    """
 #    Test pour la lecture d'une étiquette avec l'identification des caractères basée sur les centroïdes.
 #    """
@@ -114,7 +113,7 @@ duree = time.time() - debut
 #    assert lire_etiquette_centroides(etiquettes[0]) == 'ASSYA20020202'
 #
 #
-#def test_integration_2():
+# def test_integration_2():
 #    """
 #    Test d'intégration qui consiste à l'identification basé sur la distance des centroïdes.
 #    """

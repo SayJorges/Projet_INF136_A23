@@ -9,7 +9,6 @@ from donnees.donnees import *
 
 
 def test_visuel_charger_references():
-
     """
    Test visuel pour le chargement des références.
    """
@@ -21,17 +20,18 @@ def test_visuel_charger_references():
     for image in ref.values():
         afficher(image, "Test images références", False)
 
-# def test_visuel_charger_etiquettes():
-#    """
-#    Test visuel pour le chargement des étiquettes.
-#    """
-#
-#    # Charger les références
-#    etiquettes = charger_etiquettes()
-#
-#    # Afficher les images une par une
-#    for etiquette in etiquettes:
-#        afficher(etiquette, "Test etiquettes", False))
+
+def test_visuel_charger_etiquettes():
+    #    """
+    #    Test visuel pour le chargement des étiquettes.
+    #    """
+    #
+    #    # Charger les références
+    etiq = charger_etiquettes()
+    #
+    #    # Afficher les images une par une
+    for etiquette in etiq:
+        afficher(etiquette, "Test etiquettes", False)
 #
 #
 # def test_centroides_references():

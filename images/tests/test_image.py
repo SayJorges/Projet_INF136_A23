@@ -1,46 +1,42 @@
-
 # Librairies générales
 import numpy as np
 import pytest
 
 # Librairies testées
-from images.image *
+from images.image import *
 
-#
-#def test_calculer_difference():
-#    #
-#    #Test d'une différence nulle en comparant une image à elle-même.
-#    #
-#
-#    image = np.random.randint(0, 10, (5, 5))
-#
-#    assert calculer_difference(image, image) == 0
-#
-#    #
-#    #Test d'une différence positive en comparant une image avec des pixels allumés à une image vide.
-#    # La probabilité d'un faux positif est égale à (1/10)^25.
-#    #
-#
-#    image = np.random.randint(0, 10, (5, 5))
-#    image_vide = np.zeros((5, 5))
-#
-#    assert calculer_difference(image, image_vide) > 0
-#
-#
-#    #
-#    #Test d'une différence négative en comparant une image avec des pixels allumés à une image vide. Puisque la distance
-#    #est sensée être retourne en valeur absolue, nous nous attendons à une valeur positive.
-#    #
-#    #La probabilité d'un faux positif est égale à (1/10)^25.
-#    #
-#
-#    image = np.random.randint(0, 10, (5, 5))
-#    image_vide = np.zeros((5, 5))
-#
-#    assert calculer_difference(image_vide, image) > 0
+
+def test_calculer_difference():
+    # Test d'une différence nulle en comparant une image à elle-même.
+    image = np.random.randint(0, 10, (5, 5))
+    #
+    assert calculer_difference(image, image) == 0
+    #
+    #    #
+    #    #Test d'une différence positive en comparant une image avec des pixels allumés à une image vide.
+    #    # La probabilité d'un faux positif est égale à (1/10)^25.
+    #    #
+    #
+    image = np.random.randint(0, 10, (5, 5))
+    image_vide = np.zeros((5, 5))
+    #
+    assert calculer_difference(image, image_vide) > 0
+    #
+    #
+    #    #
+    #    #Test d'une différence négative en comparant une image avec des pixels allumés à une image vide. Puisque la distance
+    #    #est sensée être retourne en valeur absolue, nous nous attendons à une valeur positive.
+    #    #
+    #    #La probabilité d'un faux positif est égale à (1/10)^25.
+    #    #
+    #
+    image = np.random.randint(0, 10, (5, 5))
+    image_vide = np.zeros((5, 5))
+    #
+    assert calculer_difference(image_vide, image) > 0
 #
 #
-#def test_calculer_moments_premier_ordre():
+# def test_calculer_moments_premier_ordre():
 #    """
 #    Test pour le calcul des moments du premier ordre d'une image.
 #
@@ -66,7 +62,7 @@ from images.image *
 #           masse == masse_attendue
 #
 #
-#def test_calculer_centroide_image_vide():
+# def test_calculer_centroide_image_vide():
 #    """
 #    Test avec une image vide dont le centroïde devrait être situé à (0,0).
 #    """
@@ -77,7 +73,7 @@ from images.image *
 #    assert calculer_centroide(image) == (0.0, 0.0)
 #
 #
-#def test_calculer_centroide_entiers():
+# def test_calculer_centroide_entiers():
 #    """
 #    Test avec un seul pixel au centre (1,1) d'une image 3 x 3.
 #    """
@@ -88,7 +84,7 @@ from images.image *
 #    assert calculer_centroide(image) == (0.6, 0.7)
 #
 #
-#def test_calculer_centroide_rationnels():
+# def test_calculer_centroide_rationnels():
 #    """
 #    Test avec une image dont le centroïde n'atterrit pas sur des coordonnées entières.
 #    """
@@ -99,7 +95,7 @@ from images.image *
 #    assert calculer_centroide(image) == (0.5, 0.5)
 #
 #
-#def test_calculer_moments_deuxieme_ordre():
+# def test_calculer_moments_deuxieme_ordre():
 #    """
 #    Test pour le calcul des moments du deuxième ordre d'une image.
 #    """
@@ -116,7 +112,7 @@ from images.image *
 #    assert np.allclose(moments_obtenus, moments_attendus)
 #
 #
-#def test_calculer_matrice_covariance():
+# def test_calculer_matrice_covariance():
 #    """
 #    Test pour le calcul de la matrice de covariance.
 #    """
@@ -138,7 +134,7 @@ from images.image *
 #    assert np.allclose(cov_obtenue, cov_attendue)
 #
 #
-#def test_calculer_vecteurs_propres():
+# def test_calculer_vecteurs_propres():
 #    """
 #    Test pour le calcul des vecteurs propres.
 #    """
@@ -159,7 +155,7 @@ from images.image *
 #           v2[1] == approx_inv_racine_2_negatif
 #
 #
-#def test_estimer_angle_rotation():
+# def test_estimer_angle_rotation():
 #    """
 #    Test pour le calcul des vecteurs propres.
 #    """
