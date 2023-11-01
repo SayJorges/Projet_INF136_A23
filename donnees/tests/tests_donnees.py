@@ -1,3 +1,4 @@
+
 # Librairies générales
 import pytest
 
@@ -9,19 +10,20 @@ from donnees.donnees import *
 
 
 def test_visuel_charger_references():
-    #    """
-    #    Test visuel pour le chargement des références.
-    #    """
-    #
-    #     Charger les références
-    references = charger_references()
-    #
-    #    # Afficher les images une par une
-    for image in references.values():
-        afficher(image, "Test images références", False)
-#
-#
-# def test_visuel_charger_etiquettes():
+
+   """
+   Test visuel pour le chargement des références.
+   """
+
+   # Charger les références
+   references = charger_references()
+
+   # Afficher les images une par une
+   for image in references.values():
+       afficher(image, "Test images références", False)
+
+
+#def test_visuel_charger_etiquettes():
 #    """
 #    Test visuel pour le chargement des étiquettes.
 #    """
@@ -34,7 +36,7 @@ def test_visuel_charger_references():
 #        afficher(etiquette, "Test etiquettes", False))
 #
 #
-# def test_centroides_references():
+#def test_centroides_references():
 #    """
 #    Test pour le calcul, le stockage et le chargement des centroïdes des références.
 #    """

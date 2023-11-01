@@ -4,7 +4,7 @@ import numpy as np
 import pytest
 
 # Librairies testées
-from images.image import *
+from images.image *
 
 #
 #def test_calculer_difference():
