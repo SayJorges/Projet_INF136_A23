@@ -10,28 +10,28 @@ from images.image import *
 from algorithme.algorithme import *
 
 
-#def test_identifier_caractere_distances():
+def test_identifier_caractere_distances():
 #    """
 #    Test pour l'identification des caractère sur le jeu de caractères de référence basé sur les distances.
 #    """
 #
 #    # Charger les images de référence
-#    references = charger_references()
+    references = charger_references()
 #
 #    # Marquer le début du test
-#    debut = time.time()
+    debut = time.time()
 #
 #    # Identifier chacun des caractères
-#    for caractere in references:
+    for caractere in references:
 #
 #        # Identifier le caractère courant
-#        caractere_identifie = identifier_caractere_avec_distances(references[caractere], references)
+        caractere_identifie = identifier_caracteres_avec_distances(references[caractere], references)
 #
 #        # Valider que le caractère courant correspond à la clé du dictionnaire de références
-#        assert str(caractere_identifie) == caractere
+    assert str(caractere_identifie) == caractere
 #
 #    # Calculer la durée du test
-#    duree = time.time() - debut
+duree = time.time() - debut
 #
 #    # Afficher la durée du test
 #    print(f'Durée: {duree} seconds')
