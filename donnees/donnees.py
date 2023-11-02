@@ -6,17 +6,16 @@ from images.image import *
 
 
 def charger_references():
-    # cree le dictionnaire
+    # Crée le dictionnaire
     dictionnaire_caractere = {}
 
-    # charger une image
-    for elements in REFERENCE_LETTRES_CHIFFRES:
-        imagee = charger_jpeg(CHEMIN_REFERENCES + "\\" + elements + ".jpg")
+    # Charger une image
+    for element in REFERENCE_LETTRES_CHIFFRES:
+        image = charger_jpeg(CHEMIN_REFERENCES + "\\" + element + ".jpg")
 
-        dictionnaire_caractere[f"elements.jpg"] = imagee
+        dictionnaire_caractere[element] = image
 
     return dictionnaire_caractere
-
 
 def charger_etiquettes():
     # Charger l'image de l'étiquette
