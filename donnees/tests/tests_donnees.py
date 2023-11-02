@@ -31,7 +31,7 @@ def test_visuel_charger_etiquettes():
     #
     #    # Afficher les images une par une
     for etiquette in etiq:
-        afficher(etiquette, "Test etiquettes", False)
+        afficher(etiquette, "Test etiquettes", True)
 #
 #
 # def test_centroides_references():

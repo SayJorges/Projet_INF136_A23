@@ -6,10 +6,10 @@ from images.image import *
 
 
 def charger_references():
-    # Crée le dictionnaire
+    # cree le dictionnaire
     dictionnaire_caractere = {}
 
-    # Charger une image
+    # charger une image
     for element in REFERENCE_LETTRES_CHIFFRES:
         image = charger_jpeg(CHEMIN_REFERENCES + "\\" + element + ".jpg")
 
@@ -17,28 +17,27 @@ def charger_references():
 
     return dictionnaire_caractere
 
+
 def charger_etiquettes():
-    # Charger l'image de l'étiquette
-    image_etiquette = charger_references()
+    # Chemin vers le répertoire contenant les étiquettes
+    repertoire_etiquettes = CHEMIN_RACINE + '\\donnees\\etiquettes'
 
-    if image_etiquette is None:
-        raise FileNotFoundError("Impossible de charger l'image de l'étiquette.")
+    # Liste pour stocker les images des étiquettes
+    images_etiquettes = []
 
-    # Assurez-vous que l'image de l'étiquette a les dimensions attendues (40x520)
-    if image_etiquette.shape != (40, 520):
-        raise ValueError("L'image de l'étiquette ne correspond pas à la taille attendue (40x520).")
+    # Liste des caractères de référence de '0' à '9' et de 'a' à 'z'
+    #caracteres = charger_references()
+    # Liste des caractères de référence de '0' à '9' et de 'a' à 'z'
+    caracteres = [str(i) for i in range(10)] + [chr(ord('a') + i) for i in range(26)]
 
-    # Initialiser une liste pour stocker les 13 caractères
-    etiquettes = []
+    for caractere in caracteres:
+        image = charger_jpeg(CHEMIN_REFERENCES + "\\" + caractere + ".jpg")
+        # Découper l'image en 13 morceaux de 40x40
+        for i in range(0, image.shape[1], 40):
+            morceau = image[:, i:i + 40]
+            images_etiquettes.append(morceau)
 
-    # Découper l'image de l'étiquette en 13 images 40x40
-    for i in range(len(etiquettes)):
-        debut_colonne = i * 40
-        fin_colonne = debut_colonne + 40
-        caractere = image_etiquette[:, debut_colonne:fin_colonne]
-        etiquettes.append(caractere)
-
-    return etiquettes
+    return images_etiquettes
 
 
 def charger_centroides_reference(*args):
