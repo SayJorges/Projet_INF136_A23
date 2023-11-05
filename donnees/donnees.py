@@ -1,5 +1,5 @@
 import cv2
-
+import numpy as np
 from constantes import *
 
 from images.image import *
@@ -22,22 +22,26 @@ def charger_etiquettes():
     # Chemin vers le répertoire contenant les étiquettes
     repertoire_etiquettes = CHEMIN_RACINE + '\\donnees\\etiquettes'
 
-    # Liste pour stocker les images des étiquettes
+    # List to store the images of the labels
     images_etiquettes = []
 
-    # Liste des caractères de référence de '0' à '9' et de 'a' à 'z'
-    #caracteres = charger_references()
-    # Liste des caractères de référence de '0' à '9' et de 'a' à 'z'
+    # List of reference characters from '0' to '9' and 'a' to 'z'
     caracteres = [str(i) for i in range(10)] + [chr(ord('a') + i) for i in range(26)]
 
     for caractere in caracteres:
         image = charger_jpeg(CHEMIN_REFERENCES + "\\" + caractere + ".jpg")
-        # Découper l'image en 13 morceaux de 40x40
+        # Cut the image into 13 pieces of 40x40
         for i in range(0, image.shape[1], 40):
             morceau = image[:, i:i + 40]
             images_etiquettes.append(morceau)
 
-    return images_etiquettes
+    # Stack images horizontally to create a single image
+    image_array = np.concatenate(images_etiquettes, axis=1)
+
+    # Separate the image every 520 pixels horizontally and create 40x520 segments
+    separated_images = [image_array[:, i:i + 520] for i in range(0, image_array.shape[1], 520)]
+
+    return separated_images
 
 
 def charger_centroides_reference(*args):
