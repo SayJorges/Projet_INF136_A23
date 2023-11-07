@@ -19,20 +19,21 @@ def charger_references():
 
 
 def charger_etiquettes():
-    # Chemin vers le répertoire contenant les étiquettes
-    repertoire_etiquettes = CHEMIN_RACINE + '\\donnees\\etiquettes'
 
     # List to store the images of the labels
     images_etiquettes = []
+    REFERENCE_ETIQUETTES = []
 
-    # List of reference characters from '0' to '9' and 'a' to 'z'
-    caracteres = [str(i) for i in range(10)] + [chr(ord('a') + i) for i in range(26)]
+    for i in range(1, 41):
+        chiffres = str(i)
+        REFERENCE_ETIQUETTES.append(chiffres)
 
-    for caractere in caracteres:
-        image = charger_jpeg(CHEMIN_REFERENCES + "\\" + caractere + ".jpg")
+    for number in REFERENCE_ETIQUETTES:
+        image = charger_jpeg(CHEMIN_ETIQUETTES + "\\" + number + ".jpg")
+
         # Cut the image into 13 pieces of 40x40
-        for i in range(0, image.shape[1], 40):
-            morceau = image[:, i:i + 40]
+        for j in range(0, image.shape[1], CARACTERE_NB_PIXELS_COTE):
+            morceau = image[:, j:j + CARACTERE_NB_PIXELS_COTE]
             images_etiquettes.append(morceau)
 
     # Stack images horizontally to create a single image
