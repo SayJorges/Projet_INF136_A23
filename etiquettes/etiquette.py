@@ -17,6 +17,7 @@ def decouper(image_etiquette):
         morceaux = [image[:, i:i + 40] for i in range(0, image.shape[1], 40)]
         images_etiquettes.extend(morceaux)
 
+
     images_array = np.array(images_etiquettes)
 
     return images_array
