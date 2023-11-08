@@ -34,33 +34,34 @@ def test_calculer_difference():
     image_vide = np.zeros((5, 5))
     #
     assert calculer_difference(image_vide, image) > 0
+
+
 #
 #
-# def test_calculer_moments_premier_ordre():
-#    """
+def test_calculer_moments_premier_ordre():
+    """
 #    Test pour le calcul des moments du premier ordre d'une image.
 #
-#    Moment en x = 1 * 0 + 2 * 1 + 3 * 0 + 4 * 1 = 6
-#    Moment en y = 1 * 0 + 2 * 0 + 3 * 1 + 4 * 1 = 7
-#    Masse = 1 + 2 + 3 + 4 = 10
-#    """
-#
-#    # Image de test
-#    image = np.array([[1, 2],
-#                      [3, 4]])
-#
-#    # Calculer les moments du premier ordre
-#    moment_x, moment_y, masse = calculer_moments_premier_ordre(image)
-#
-#    # Résultats attendus
-#    moment_x_attendu = 6
-#    moment_y_attendu = 7
-#    masse_attendue = 10
-#
-#    assert moment_x == moment_x_attendu and \
-#           moment_y == moment_y_attendu and \
-#           masse == masse_attendue
-#
+    Moment en x = 1 * 0 + 2 * 1 + 3 * 0 + 4 * 1 = 6
+    Moment en y = 1 * 0 + 2 * 0 + 3 * 1 + 4 * 1 = 7
+    masse = 1 + 2 + 3 + 4 = 10
+    """
+
+
+# Image de test
+image = np.array([[1, 2], [3, 4]])
+# Calculer les moments du premier ordre
+moment_x, moment_y, masse = calculer_moments_premier_ordre(image)
+
+# Résultats attendus
+moment_x_attendu = 6
+moment_y_attendu = 7
+masse_attendue = 10
+
+assert moment_x == moment_x_attendu and \
+       moment_y == moment_y_attendu and \
+       masse == masse_attendue
+
 #
 # def test_calculer_centroide_image_vide():
 #    """

@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 
 # Constantes internes
 from constantes import RGB_MAX
+from donnees.donnees import *
 
 
 def charger_jpeg(chemin: str) -> np.ndarray:
@@ -145,11 +146,9 @@ def calculer_vecteurs_propres(*args):
     raise NotImplementedError("Cette fonction n'est pas implémentée")
 
 
-def calculer_centroide(*args):
-    """
-    TODO: À être implémenté par les étudiants.
-    """
-    raise NotImplementedError("Cette fonction n'est pas implémentée")
+def calculer_centroide(image):
+
+
 
 
 def calculer_difference(image, image_2):
@@ -159,3 +158,28 @@ def calculer_difference(image, image_2):
             distance += (abs(image[i, j] - image_2[i, j]))
 
     return distance
+
+
+def calculer_moments_premier_ordre(image):
+
+    # Obtenez les dimensions de l'image (largeur et hauteur)
+    largeur = len(image)
+    hauteur = len(image[0])
+
+    # Initialisez les variables pour les moments du premier ordre en 𝑥, 𝑦 et la masse
+    moment_x = 0
+    moment_y = 0
+    masse = 0
+
+    # Parcourez les pixels de l'image avec des boucles for imbriquées
+    for i in range(hauteur):
+        for j in range(largeur):
+            # Obtenez la valeur du pixel à la position (i, j)
+            pixel_value = image[i,j]
+
+            # Mettez à jour les moments du premier ordre en 𝑥, 𝑦 et la masse
+            moment_x += pixel_value * j
+            moment_y += pixel_value * i
+            masse += pixel_value
+
+    return moment_x, moment_y, masse
