@@ -29,6 +29,6 @@ def lire_etiquette_distances(image_etiquette, base_de_donnees):
     code = str()
 
     for i in range(0, 13, 1):  # essaye de parcourir le tableau
-        code += (identifier_caracteres_avec_distances(tableau[i], base_de_donnees))
+        code += identifier_caracteres_avec_distances((tableau[i]), base_de_donnees)
 
     return code

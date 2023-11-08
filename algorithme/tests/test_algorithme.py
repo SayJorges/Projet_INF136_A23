@@ -37,7 +37,6 @@ def test_identifier_caractere_distances():
 #    # Afficher la durée du test
 # print(f'Durée: {duree} seconds')
 #
-#
 def test_lire_etiquette_distances():
     #    """
     #    Test pour la lecture d'une étiquette avec l'identification des caractères basée sur la distance.
@@ -58,6 +57,7 @@ def test_integration_1():
     #
     #    # Charger la base de données d'étiquettes
     etiquettes = charger_etiquettes()
+    r = charger_references()
     #
     #    # Initialiser le compteur d'étiquettes
     i = 1
@@ -66,7 +66,7 @@ def test_integration_1():
     for etiquette in etiquettes:
         #
         #        # Lire l'étiquette
-        etiquette_str = lire_etiquette_distances(etiquette)
+        etiquette_str = lire_etiquette_distances(etiquette, r)
         #
         #        # Afficher l'étiquette courante
         afficher(etiquette, etiquette_str.upper())
