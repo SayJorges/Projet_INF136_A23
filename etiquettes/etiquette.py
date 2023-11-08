@@ -3,23 +3,13 @@ import numpy as np
 from constantes import *
 from images.image import *
 
-def decouper(image_etiquette):
 
+def decouper(image_etiquette):
     # Liste pour stocker les images des étiquettes
     images_etiquettes = []
+    # boucle pour separer en  13 images de 40 caracteres
+    for i in range(0, 13, 1):
+        images = image_etiquette[0:40, i * 40:(i * 40 + 40)]
+        images_etiquettes.append(images)
 
-    # Liste des caractères de référence de '0' à '9' et de 'a' à 'z'
-    caracteres = [str(i) for i in range(10)] + [chr(ord('a') + i) for i in range(26)]
-
-    for caractere in caracteres:
-        image = charger_jpeg(CHEMIN_REFERENCES + "\\" + caractere + ".jpg")
-        # Découper l'image en 13 morceaux de 40x40
-        morceaux = [image[:, i:i + 40] for i in range(0, image.shape[1], 40)]
-        images_etiquettes.extend(morceaux)
-
-
-    images_array = np.array(images_etiquettes)
-
-    return images_array
-
-
+    return images_etiquettes

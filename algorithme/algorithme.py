@@ -1,6 +1,7 @@
 from images.image import *
 from donnees.donnees import *
 from constantes import *
+from etiquettes.etiquette import *
 
 
 def identifier_caracteres_avec_distances(image_a_identifier, base_de_donnees):
@@ -20,3 +21,14 @@ def identifier_caracteres_avec_distances(image_a_identifier, base_de_donnees):
             caractere_identifie = caractere_reference
 
     return caractere_identifie
+
+
+def lire_etiquette_distances(image_etiquette, base_de_donnees):
+    tableau = decouper(image_etiquette)  # retourne des images en tableau découpé de l'étiquette [a,s,s,y]
+
+    code = str()
+
+    for i in range(0, 13, 1):  # essaye de parcourir le tableau
+        code += (identifier_caracteres_avec_distances(tableau[i], base_de_donnees))
+
+    return code

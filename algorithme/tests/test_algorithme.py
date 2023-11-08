@@ -28,47 +28,51 @@ def test_identifier_caractere_distances():
     #
     #        # Valider que le caractère courant correspond à la clé du dictionnaire de références
     assert str(caractere_identifie) == caractere
+
+
 #
 #    # Calculer la durée du test
 # duree = time.time() - debut
 #
 #    # Afficher la durée du test
-#    print(f'Durée: {duree} seconds')
+# print(f'Durée: {duree} seconds')
 #
 #
-# def test_lire_etiquette_distances():
-#    """
-#    Test pour la lecture d'une étiquette avec l'identification des caractères basée sur la distance.
-#    """
+def test_lire_etiquette_distances():
+    #    """
+    #    Test pour la lecture d'une étiquette avec l'identification des caractères basée sur la distance.
+    #    """
+    #
+    #    # Charger la base de données d'étiquettes
+    references = charger_references()
+    etiquettes = charger_etiquettes()
+    assert lire_etiquette_distances(etiquettes[0], references) == 'ASSYA20020202'
+
+
 #
-#    # Charger la base de données d'étiquettes
-#    references = charger_references()
-#    etiquettes = charger_etiquettes()
-#    assert lire_etiquette_distances(etiquettes[0], references) == 'ASSYA20020202'
 #
-#
-# def test_integration_1():
-#    """
-#    Test d'intégration qui consiste à l'identification basé sur la minimisation de la distance.
-#    """
-#
-#    # Charger la base de données d'étiquettes
-#    etiquettes = charger_etiquettes()
-#
-#    # Initialiser le compteur d'étiquettes
-#    i = 1
-#
-#    # Analyser chaque étiquette et afficher le résultat
-#    for etiquette in etiquettes:
-#
-#        # Lire l'étiquette
-#        etiquette_str = lire_etiquette_distances(etiquette)
-#
-#        # Afficher l'étiquette courante
-#        afficher(etiquette, etiquette_str.upper())
-#
-#        # Incrémenter le compteur
-#        i += 1
+def test_integration_1():
+    #    """
+    #    Test d'intégration qui consiste à l'identification basé sur la minimisation de la distance.
+    #    """
+    #
+    #    # Charger la base de données d'étiquettes
+    etiquettes = charger_etiquettes()
+    #
+    #    # Initialiser le compteur d'étiquettes
+    i = 1
+    #
+    #    # Analyser chaque étiquette et afficher le résultat
+    for etiquette in etiquettes:
+        #
+        #        # Lire l'étiquette
+        etiquette_str = lire_etiquette_distances(etiquette)
+        #
+        #        # Afficher l'étiquette courante
+        afficher(etiquette, etiquette_str.upper())
+        #
+        #        # Incrémenter le compteur
+        i += 1
 #
 #
 # def test_identifier_caractere_centroides():
