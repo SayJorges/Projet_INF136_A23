@@ -9,13 +9,8 @@ import os
 import cv2
 
 # Librairies internes
-from images.image import (
-    appliquer_rotation,
-    estimer_angle_rotation,
-    afficher,
-)
-
-
+from images.image import*
+from donnees.donnees import*
 def exemple_sauvegarde_pickle():
     """
     Exemple de sauvegarde avec la librairie pickle.
@@ -115,4 +110,5 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    #main()
+    charger_centroides_reference()

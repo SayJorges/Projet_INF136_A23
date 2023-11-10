@@ -147,9 +147,31 @@ def calculer_vecteurs_propres(*args):
 
 
 def calculer_centroide(image):
+    x_c, y_c = 0, 0
 
+# Initialiser la somme des valeurs de l'image
+    somme_valeurs = 0
 
+    # Obtenir les dimensions de l'image
+    largeur = len(image[0])
+    hauteur = len(image)
 
+    # Parcourir les pixels de l'image
+    for y in range(hauteur):
+        for x in range(largeur):
+            pixel = image[y][x]
+            somme_valeurs += pixel
+            x_c += x * pixel
+            y_c += y * pixel
+
+    # Gérer les divisions par zéro
+    if somme_valeurs == 0:
+        x_c, y_c = 0, 0
+    else:
+        x_c /= somme_valeurs
+        y_c /= somme_valeurs
+
+    return (x_c,y_c)
 
 def calculer_difference(image, image_2):
     distance = 0

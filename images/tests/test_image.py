@@ -62,40 +62,40 @@ assert moment_x == moment_x_attendu and \
        moment_y == moment_y_attendu and \
        masse == masse_attendue
 
-#
-# def test_calculer_centroide_image_vide():
-#    """
-#    Test avec une image vide dont le centroïde devrait être situé à (0,0).
-#    """
-#
-#    # L'image de test
-#    image = np.zeros((2, 2))
-#
-#    assert calculer_centroide(image) == (0.0, 0.0)
-#
-#
-# def test_calculer_centroide_entiers():
-#    """
-#    Test avec un seul pixel au centre (1,1) d'une image 3 x 3.
-#    """
-#
-#    # Image de test
-#    image = np.array([[1, 2], [3, 4]])
-#
-#    assert calculer_centroide(image) == (0.6, 0.7)
-#
-#
-# def test_calculer_centroide_rationnels():
-#    """
-#    Test avec une image dont le centroïde n'atterrit pas sur des coordonnées entières.
-#    """
-#
-#    # Image de test
-#    image = np.array([[0.5, 0], [0, 0.5]])
-#
-#    assert calculer_centroide(image) == (0.5, 0.5)
-#
-#
+
+def test_calculer_centroide_image_vide():
+   """
+   Test avec une image vide dont le centroïde devrait être situé à (0,0).
+   """
+
+   # L'image de test
+   image = np.zeros((2, 2))
+
+   assert calculer_centroide(image) == (0.0, 0.0)
+
+
+def test_calculer_centroide_entiers():
+   """
+   Test avec un seul pixel au centre (1,1) d'une image 3 x 3.
+   """
+
+   # Image de test
+   image = np.array([[1, 2], [3, 4]])
+
+   assert calculer_centroide(image) == (0.6, 0.7)
+
+
+def test_calculer_centroide_rationnels():
+   """
+   Test avec une image dont le centroïde n'atterrit pas sur des coordonnées entières.
+   """
+
+   # Image de test
+   image = np.array([[0.5, 0], [0, 0.5]])
+
+   assert calculer_centroide(image) == (0.5, 0.5)
+
+
 # def test_calculer_moments_deuxieme_ordre():
 #    """
 #    Test pour le calcul des moments du deuxième ordre d'une image.

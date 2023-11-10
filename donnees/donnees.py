@@ -1,9 +1,9 @@
 import cv2
 import numpy as np
 from constantes import *
-
+from main import *
 from images.image import *
-
+import pickle
 
 def charger_references():
     # cree le dictionnaire
@@ -19,7 +19,6 @@ def charger_references():
 
 
 def charger_etiquettes():
-
     # List to store the images of the labels
     images_etiquettes = []
     REFERENCE_ETIQUETTES = []
@@ -45,8 +44,32 @@ def charger_etiquettes():
     return separated_images
 
 
-def charger_centroides_reference(*args):
-    """
-    TODO: À être implémenté par les étudiants.
-    """
-    raise NotImplementedError("Cette fonction n'est pas implémentée")
+def calculer_centroides_references():
+    centroides = {}  # Initialisation du dictionnaire des centroïdes
+
+    # Parcourir chaque symbole de référence
+    for image_de_reference in charger_references():
+        x_c, y_c = calculer_centroide(image_de_reference)  # Utilisez la fonction pour calculer le centroïde
+        centroides[image_de_reference] = (x_c, y_c)  # Stockez les coordonnées du centroïde dans le dictionnaire
+        print(f"Symbole : {symbole}, Centroïde : x = {x_c}, y = {y_c}")
+
+    # Créez le répertoire s'il n'existe pas
+    os.makedirs('donnees/references/centroides', exist_ok=True)
+
+    # Enregistrez le dictionnaire dans un fichier pickle
+    with open('donnees/references/centroides/centroides.pkl', 'wb') as fichier_pickle:
+        pickle.dump(centroides, fichier_pickle)
+
+
+def charger_centroides_reference():
+    chemin_fichier_pickle = 'donnees/references/centroides/centroides.pkl'
+
+    if not os.path.exists(chemin_fichier_pickle):
+        # Si le fichier pickle n'existe pas, calculez les centroides de références
+        calculer_centroides_references()
+
+    # Chargez les centroïdes depuis le fichier pickle
+    with open(chemin_fichier_pickle, 'rb') as fichier_pickle:
+        centroides = pickle.load(fichier_pickle)
+
+    return centroides

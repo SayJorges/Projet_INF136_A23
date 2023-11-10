@@ -1,4 +1,29 @@
 import cv2
+from donnees.donnees import *
+from constantes import *
+
+
+def decouper(image_etiquette):
+    # Lire l'image d'étiquette
+
+    # Assurez-vous que l'image a été chargée avec succès
+    # if img is None:
+    #     raise ValueError("Impossible de charger l'image d'étiquette.")
+
+    caract = []
+
+    # Extraire chaque caractère sous forme d'image en tableau NumPy
+    for image in charger_etiquettes():
+        for element in image:
+            caract.append(element)
+            caract.split(element)
+
+    # # Assurez-vous que nous avons exactement 13 caractères
+    if len(caract) != 13:
+        raise ValueError("L'image d'étiquette ne contient pas 13 caractères.")
+
+    return caract
+import cv2
 import numpy as np
 from constantes import *
 from images.image import *
