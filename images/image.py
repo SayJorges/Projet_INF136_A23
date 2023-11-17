@@ -173,6 +173,7 @@ def calculer_centroide(image):
 
     return (x_c,y_c)
 
+
 def calculer_difference(image, image_2):
     distance = 0
     for i in range(0, len(image)):

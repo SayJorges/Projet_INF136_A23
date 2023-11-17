@@ -1,7 +1,8 @@
 import cv2
 from donnees.donnees import *
 from constantes import *
-
+import numpy as np
+from images.image import *
 
 def decouper(image_etiquette):
     # Lire l'image d'étiquette
@@ -23,10 +24,7 @@ def decouper(image_etiquette):
         raise ValueError("L'image d'étiquette ne contient pas 13 caractères.")
 
     return caract
-import cv2
-import numpy as np
-from constantes import *
-from images.image import *
+
 
 
 def decouper(image_etiquette):

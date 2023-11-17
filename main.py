@@ -110,5 +110,4 @@ def main():
 
 
 if __name__ == '__main__':
-    #main()
-    charger_centroides_reference()
+    main()
