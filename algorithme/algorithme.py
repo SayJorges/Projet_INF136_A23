@@ -51,7 +51,7 @@ def identifier_caractere_avec_centroides(references_image, reference_centroides)
         xc_ref, yc_ref = centroide_reference
 
         # Calculer les coordonnées x et y du centroïde de l'image
-        xc, yc = references_image.mean(axis=0), references_image.mean(axis=1)
+        xc, yc = calculer_centroide(references_image)
 
         # Calculer la distance entre l'image et le centroïde de référence
         distance = ((xc_ref - xc) ** 2 + (yc_ref - yc) ** 2) ** 0.5
