@@ -7,7 +7,8 @@ import matplotlib.pyplot as plt
 
 # Constantes internes
 from constantes import RGB_MAX
-from donnees.donnees import *
+#from donnees.donnees import *
+
 
 
 def charger_jpeg(chemin: str) -> np.ndarray:
@@ -160,7 +161,7 @@ def calculer_centroide(image):
     for y in range(hauteur):
         for x in range(largeur):
             pixel = image[y][x]
-            somme_valeurs += pixel
+            somme_valeurs += (pixel)
             x_c += x * pixel
             y_c += y * pixel
 
