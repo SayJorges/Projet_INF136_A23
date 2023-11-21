@@ -62,3 +62,35 @@ def identifier_caractere_avec_centroides(references_image, reference_centroides)
             caractere_identifie = caractere
 
     return caractere_identifie
+
+
+def lire_etiquette_centroides(image_etiquette,references_centroides):
+    """
+    Identifie une étiquette à partir de l'identification de caractères basée sur les centroïdes.
+
+    Arguments:
+    - image_etiquette: Une image qui correspond à une étiquette.
+
+    Retourne:
+    Une chaîne de caractères qui correspond à la lecture de l'étiquette.
+    """
+
+    # Initialiser une liste pour stocker les caractères identifiés
+    caracteres_identifies = []
+
+    # Parcourir les sous-images de l'étiquette (supposons que l'étiquette soit une grille de caractères)
+    for colonne in range(0, image_etiquette.shape[1], 40):
+        for ligne in range(0, image_etiquette.shape[0], 40):
+            # Extraire la sous-image correspondant à un caractère potentiel
+            caractere_image = image_etiquette[ligne:ligne+40, colonne:colonne+40]
+
+            # Identifier le caractère à partir des centroïdes (vous devez avoir une fonction appropriée ici)
+            identification = identifier_caractere_avec_centroides(caractere_image, references_centroides)
+
+            # Ajouter le caractère identifié à la liste
+            caracteres_identifies.append(identification)
+
+    # Concaténer les caractères identifiés pour former l'étiquette complète
+    etiquette_lue = ''.join(caracteres_identifies)
+
+    return etiquette_lue

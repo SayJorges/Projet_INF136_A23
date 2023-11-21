@@ -25,7 +25,7 @@ def test_identifier_caractere_distances():
    for caractere in references:
 
        # Identifier le caract?re courant
-       caractere_identifie = identifier_caractere_avec_distances(references[caractere], references)
+       caractere_identifie = identifier_caracteres_avec_distances(references[caractere], references)
 
        # Valider que le caract?re courant correspond ? la cl? du dictionnaire de r?f?rences
        assert str(caractere_identifie) == caractere
@@ -34,7 +34,7 @@ def test_identifier_caractere_distances():
    duree = time.time() - debut
 
    # Afficher la dur?e du test
-   print(f'Dur?e: {duree} seconds')
+   print(f'Duree: {duree} seconds')
 
 
 def test_lire_etiquette_distances():
@@ -50,12 +50,12 @@ def test_lire_etiquette_distances():
 
 def test_integration_1():
    """
-   Test d'int?gration qui consiste ? l'identification bas? sur la minimisation de la distance.
+   #Test d'int?gration qui consiste ? l'identification bas? sur la minimisation de la distance.
    """
 
    # Charger la base de donn?es d'?tiquettes
    etiquettes = charger_etiquettes()
-
+   references = charger_references()
    # Initialiser le compteur d'?tiquettes
    i = 1
 
@@ -63,7 +63,7 @@ def test_integration_1():
    for etiquette in etiquettes:
 
        # Lire l'?tiquette
-       etiquette_str = lire_etiquette_distances(etiquette)
+       etiquette_str = lire_etiquette_distances(etiquette,references)
 
        # Afficher l'?tiquette courante
        afficher(etiquette, etiquette_str.upper())
@@ -100,40 +100,41 @@ def test_identifier_caractere_centroides():
    duree = time.time() - debut
 
    # Afficher la dur?e du test
-   print(f'Dur?e: {duree} seconds')
+   print(f'Duree: {duree} seconds')
 
 
-#def test_lire_etiquette_centroides():
-#    """
-#    Test pour la lecture d'une ?tiquette avec l'identification des caract?res bas?e sur les centro?des.
-#    """
-#
-#    # Charger la base de donn?es d'?tiquettes
-#    etiquettes = charger_etiquettes()
-#
-#    assert lire_etiquette_centroides(etiquettes[0]) == 'ASSYA20020202'
-#
-#
-#def test_integration_2():
+def test_lire_etiquette_centroides():
+   # """
+   # Test pour la lecture d'une ?tiquette avec l'identification des caract?res bas?e sur les centro?des.
+   # """
+
+   # Charger la base de données d'étiquettes
+   etiquettes = charger_etiquettes()
+   references = charger_centroides_reference()
+
+
+   assert lire_etiquette_centroides(etiquettes[0], references) == 'ASSYA20020202'
+
+
+def test_integration_2():
 #    """
 #    Test d'int?gration qui consiste ? l'identification bas? sur la distance des centro?des.
 #    """
 #
-#    # Charger la base de donn?es d'?tiquettes
-#    etiquettes = charger_etiquettes()
-#
-#    # Initialiser le compteur d'?tiquettes
-#    i = 1
-#
-#    # Analyser chaque ?tiquette et afficher le r?sultat
-#    for etiquette in etiquettes:
-#
-#        # Lire l'?tiquette
-#        etiquette_str = lire_etiquette_centroides(etiquette)
-#
-#        # Afficher l'?tiquette courante
-#        afficher(etiquette, etiquette_str.upper())
-#
-#        # Incr?menter le compteur
-#        i += 1
-#
+   # Charger la base de donn?es d'?tiquettes
+   etiquettes = charger_etiquettes()
+   references = charger_centroides_reference()
+   # Initialiser le compteur d'?tiquettes
+   i = 1
+
+   # Analyser chaque ?tiquette et afficher le r?sultat
+   for etiquette in etiquettes:
+
+       # Lire l'?tiquette
+       etiquette_str = lire_etiquette_centroides(etiquette, references)
+
+       # Afficher l'?tiquette courante
+       afficher(etiquette, etiquette_str.upper())
+
+       # Incr?menter le compteur
+       i += 1

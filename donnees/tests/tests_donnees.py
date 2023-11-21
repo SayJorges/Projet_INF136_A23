@@ -17,7 +17,7 @@ def test_visuel_charger_references():
 
     # Afficher les images une par une
     for image in ref.values():
-        afficher(image, "Test images références", True)
+        afficher(image, "Test images références", False)
 
 
 def test_visuel_charger_etiquettes():
