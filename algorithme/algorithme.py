@@ -1,11 +1,28 @@
+
+from images.image import *
+from etiquettes.etiquette import *
+
+
+
+
+
 from images.image import *
 from donnees.donnees import *
 from constantes import *
 from etiquettes.etiquette import *
 
-
+"""  
+    Description : Identifie un caractère alphanumérique par rapport à la distance avec un ensemble de caractères de référence. 
+    
+    Arguments :
+        - image_a_identifier    : L’image du caractère à identifier. 
+        - base_de_donnees       : Base de données qui contient les caractères de référence. 
+    
+    Retourne : La valeur (str) du caractère identifié.
+    
+"""
 def identifier_caracteres_avec_distances(image_a_identifier, base_de_donnees):
-    # Vérifier que l'image reçue a la taille attendue
+# Vérifier que l'image reçue a la taille attendue
     if image_a_identifier.shape != (40, 40):
         raise ValueError("La taille de l'image reçue ne correspond pas à la taille attendue (40x40).")
 
@@ -13,7 +30,7 @@ def identifier_caracteres_avec_distances(image_a_identifier, base_de_donnees):
     distance_minimale = float('inf')
 
     for caractere_reference, image_reference in base_de_donnees.items():
-        # Calculer la distance entre l'image à identifier et l'image de référence
+    # Calculer la distance entre l'image à identifier et l'image de référence
         distance = calculer_difference(image_a_identifier, image_reference)
 
         if distance < distance_minimale:
@@ -23,6 +40,16 @@ def identifier_caracteres_avec_distances(image_a_identifier, base_de_donnees):
     return caractere_identifie
 
 
+"""
+    Description : Identifie une étiquette à partir de l’identification de caractères basée sur la distance. 
+    
+    Arguments : 
+        - image_etiquette   : Une image qui correspond à une étiquette. 
+        - base_de_donnees   : Base de données qui contient les caractères de référence. 
+    
+    Retourne : Une chaîne de caractères qui correspond à la lecture de l’étiquette.
+
+"""
 def lire_etiquette_distances(image_etiquette, base_de_donnees):
     tableau = decouper(image_etiquette)  # retourne des images en tableau découpé de l'étiquette [a,s,s,y]
 
@@ -32,9 +59,15 @@ def lire_etiquette_distances(image_etiquette, base_de_donnees):
         code += identifier_caracteres_avec_distances((tableau[i]), base_de_donnees)
 
     return code
+"""
+    Description : Identifie un caractère alphanumérique par rapport à la distance avec un ensemble de centroïdes de référence.
 
+    Arguments : 
+        - references_image      : L’image du caractère à identifier. 
+        - reference_centroide   : Un dictionnaire qui contient l'ensemble des centroïdes de référence. 
 
-
+    Retourne : La valeur (str) du caractère identifié.
+"""
 def identifier_caractere_avec_centroides(references_image, reference_centroides):
 
     if references_image.shape != (40,40):
@@ -62,7 +95,15 @@ def identifier_caractere_avec_centroides(references_image, reference_centroides)
             caractere_identifie = caractere
 
     return caractere_identifie
-
+    """
+    Description : Identifie une étiquette à partir de l’identification de caractères basée sur les centroïdes. 
+    
+    Arguments : 
+        - image_etiquette       : Une image qui correspond à une étiquette. 
+        - references_centroides : Un dictionnaire qui contient l'ensemble des centroïdes de référence. 
+    
+    Retourne : Une chaîne de caractères qui correspond à la lecture de l’étiquette.
+    """
 
 def lire_etiquette_centroides(image_etiquette,references_centroides):
     """
