@@ -7,8 +7,9 @@ import matplotlib.pyplot as plt
 
 # Constantes internes
 from constantes import RGB_MAX
-#from donnees.donnees import *
 
+
+# from donnees.donnees import *
 
 
 def charger_jpeg(chemin: str) -> np.ndarray:
@@ -150,7 +151,7 @@ def calculer_vecteurs_propres(*args):
 def calculer_centroide(image):
     x_c, y_c = 0, 0
 
-# Initialiser la somme des valeurs de l'image
+    # Initialiser la somme des valeurs de l'image
     somme_valeurs = 0
 
     # Obtenir les dimensions de l'image
@@ -172,7 +173,7 @@ def calculer_centroide(image):
         x_c /= somme_valeurs
         y_c /= somme_valeurs
 
-    return (x_c,y_c)
+    return (x_c, y_c)
 
 
 def calculer_difference(image, image_2):
@@ -185,7 +186,6 @@ def calculer_difference(image, image_2):
 
 
 def calculer_moments_premier_ordre(image):
-
     # Obtenez les dimensions de l'image (largeur et hauteur)
     largeur = len(image)
     hauteur = len(image[0])
@@ -199,7 +199,7 @@ def calculer_moments_premier_ordre(image):
     for i in range(hauteur):
         for j in range(largeur):
             # Obtenez la valeur du pixel à la position (i, j)
-            pixel_value = image[i,j]
+            pixel_value = image[i, j]
 
             # Mettez à jour les moments du premier ordre en 𝑥, 𝑦 et la masse
             moment_x += pixel_value * j
@@ -207,3 +207,34 @@ def calculer_moments_premier_ordre(image):
             masse += pixel_value
 
     return moment_x, moment_y, masse
+
+
+def calculer_moments_deuxieme_ordre(image):
+    # Récupérer les dimensions de l'image
+
+    # Initialiser les moments du deuxième ordre
+    mu_xy = 0
+    mu_xx = 0
+    mu_yy = 0
+    xc, yc = calculer_centroide(image)
+    # Calculer les moments du deuxième ordre en utilisant les équations 4, 5 et 6
+    for i in range(len(image)):
+        for j in range(len(image[0])):
+            pixel_value = image[i, j]
+
+            mu_xy += pixel_value * (j - xc) * (i - yc)
+            mu_xx += pixel_value * (j - xc) ** 2
+            mu_yy += pixel_value * (i - yc) ** 2
+
+    return mu_xy, mu_xx, mu_yy
+
+
+def calculer_matrice_covariance(image):
+    # Calculer les moments du deuxième ordre
+    mu_xy, mu_xx, mu_yy = calculer_moments_deuxieme_ordre(image)
+
+    # Calculer la matrice de covariance en utilisant l'équation 7
+    covariance_matrix = np.array([[mu_xx, mu_xy],
+                                  [mu_xy, mu_yy]])
+
+    return covariance_matrix

@@ -64,77 +64,78 @@ assert moment_x == moment_x_attendu and \
 
 
 def test_calculer_centroide_image_vide():
-   """
+    """
    Test avec une image vide dont le centroïde devrait être situé à (0,0).
    """
 
-   # L'image de test
-   image = np.zeros((2, 2))
+    # L'image de test
+    image = np.zeros((2, 2))
 
-   assert calculer_centroide(image) == (0.0, 0.0)
+    assert calculer_centroide(image) == (0.0, 0.0)
 
 
 def test_calculer_centroide_entiers():
-   """
+    """
    Test avec un seul pixel au centre (1,1) d'une image 3 x 3.
    """
 
-   # Image de test
-   image = np.array([[1, 2], [3, 4]])
+    # Image de test
+    image = np.array([[1, 2], [3, 4]])
 
-   assert calculer_centroide(image) == (0.6, 0.7)
+    assert calculer_centroide(image) == (0.6, 0.7)
 
 
 def test_calculer_centroide_rationnels():
-   """
+    """
    Test avec une image dont le centroïde n'atterrit pas sur des coordonnées entières.
    """
 
-   # Image de test
-   image = np.array([[0.5, 0], [0, 0.5]])
+    # Image de test
+    image = np.array([[0.5, 0], [0, 0.5]])
 
-   assert calculer_centroide(image) == (0.5, 0.5)
+    assert calculer_centroide(image) == (0.5, 0.5)
 
 
-# def test_calculer_moments_deuxieme_ordre():
-#    """
-#    Test pour le calcul des moments du deuxième ordre d'une image.
-#    """
-#
-#    # Image de test
-#    image = np.array([[1.25, 20.5], [30.1, 40.5]])
-#
-#    # Valeurs attendues
-#    moments_attendus = (-6.13345966432052, 20.707634001082837, 16.627504060638874)
-#
-#    # Valeurs obtenues
-#    moments_obtenus = calculer_moments_deuxieme_ordre(image)
-#
-#    assert np.allclose(moments_obtenus, moments_attendus)
-#
-#
-# def test_calculer_matrice_covariance():
-#    """
-#    Test pour le calcul de la matrice de covariance.
-#    """
-#
-#    # Image de test
-#    image = np.array([[1.25, 20.5], [30.1, 40.5]])
-#
-#    # Valeurs attendues
-#    mu_xy = -6.13345966432052
-#    mu_xx = 20.707634001082837
-#    mu_yy = 16.627504060638874
-#
-#    # La matrice de covariance attendue
-#    cov_attendue = [[mu_xx, mu_xy], [mu_xy, mu_yy]]
-#
-#    # La matrice de covariance obtenue
-#    cov_obtenue = calculer_matrice_covariance(image)
-#
-#    assert np.allclose(cov_obtenue, cov_attendue)
+def test_calculer_moments_deuxieme_ordre():
+    # """
+    #    Test pour le calcul des moments du deuxième ordre d'une image.
+    #    """
+
+    # Image de test
+    image = np.array([[1.25, 20.5], [30.1, 40.5]])
+
+    # Valeurs attendues
+    moments_attendus = (-6.13345966432052, 20.707634001082837, 16.627504060638874)
+
+    # Valeurs obtenues
+    moments_obtenus = calculer_moments_deuxieme_ordre(image)
+    #
+    assert np.allclose(moments_obtenus, moments_attendus)
+
+
 #
 #
+def test_calculer_matrice_covariance():
+    """
+   Test pour le calcul de la matrice de covariance.
+   """
+
+    # Image de test
+    image = np.array([[1.25, 20.5], [30.1, 40.5]])
+
+    # Valeurs attendues
+    mu_xy = -6.13345966432052
+    mu_xx = 20.707634001082837
+    mu_yy = 16.627504060638874
+
+    # La matrice de covariance attendue
+    cov_attendue = [[mu_xx, mu_xy], [mu_xy, mu_yy]]
+
+    # La matrice de covariance obtenue
+    cov_obtenue = calculer_matrice_covariance(image)
+
+    assert np.allclose(cov_obtenue, cov_attendue)
+
 # def test_calculer_vecteurs_propres():
 #    """
 #    Test pour le calcul des vecteurs propres.
