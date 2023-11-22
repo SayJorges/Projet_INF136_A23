@@ -1,10 +1,5 @@
-
 from images.image import *
 from etiquettes.etiquette import *
-
-
-
-
 
 from images.image import *
 from donnees.donnees import *
@@ -21,8 +16,10 @@ from etiquettes.etiquette import *
     Retourne : La valeur (str) du caractère identifié.
     
 """
+
+
 def identifier_caracteres_avec_distances(image_a_identifier, base_de_donnees):
-# Vérifier que l'image reçue a la taille attendue
+    # Vérifier que l'image reçue a la taille attendue
     if image_a_identifier.shape != (40, 40):
         raise ValueError("La taille de l'image reçue ne correspond pas à la taille attendue (40x40).")
 
@@ -30,7 +27,7 @@ def identifier_caracteres_avec_distances(image_a_identifier, base_de_donnees):
     distance_minimale = float('inf')
 
     for caractere_reference, image_reference in base_de_donnees.items():
-    # Calculer la distance entre l'image à identifier et l'image de référence
+        # Calculer la distance entre l'image à identifier et l'image de référence
         distance = calculer_difference(image_a_identifier, image_reference)
 
         if distance < distance_minimale:
@@ -50,6 +47,8 @@ def identifier_caracteres_avec_distances(image_a_identifier, base_de_donnees):
     Retourne : Une chaîne de caractères qui correspond à la lecture de l’étiquette.
 
 """
+
+
 def lire_etiquette_distances(image_etiquette, base_de_donnees):
     tableau = decouper(image_etiquette)  # retourne des images en tableau découpé de l'étiquette [a,s,s,y]
 
@@ -59,6 +58,8 @@ def lire_etiquette_distances(image_etiquette, base_de_donnees):
         code += identifier_caracteres_avec_distances((tableau[i]), base_de_donnees)
 
     return code
+
+
 """
     Description : Identifie un caractère alphanumérique par rapport à la distance avec un ensemble de centroïdes de référence.
 
@@ -68,10 +69,10 @@ def lire_etiquette_distances(image_etiquette, base_de_donnees):
 
     Retourne : La valeur (str) du caractère identifié.
 """
+
+
 def identifier_caractere_avec_centroides(references_image, reference_centroides):
-
-    if references_image.shape != (40,40):
-
+    if references_image.shape != (40, 40):
         raise ValueError('ESTI DE TARTE')
 
     distance_minimale = float('inf')
@@ -105,7 +106,8 @@ def identifier_caractere_avec_centroides(references_image, reference_centroides)
     Retourne : Une chaîne de caractères qui correspond à la lecture de l’étiquette.
     """
 
-def lire_etiquette_centroides(image_etiquette,references_centroides):
+
+def lire_etiquette_centroides(image_etiquette, references_centroides):
     """
     Identifie une étiquette à partir de l'identification de caractères basée sur les centroïdes.
 
@@ -123,7 +125,7 @@ def lire_etiquette_centroides(image_etiquette,references_centroides):
     for colonne in range(0, image_etiquette.shape[1], 40):
         for ligne in range(0, image_etiquette.shape[0], 40):
             # Extraire la sous-image correspondant à un caractère potentiel
-            caractere_image = image_etiquette[ligne:ligne+40, colonne:colonne+40]
+            caractere_image = image_etiquette[ligne:ligne + 40, colonne:colonne + 40]
 
             # Identifier le caractère à partir des centroïdes (vous devez avoir une fonction appropriée ici)
             identification = identifier_caractere_avec_centroides(caractere_image, references_centroides)
