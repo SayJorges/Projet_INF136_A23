@@ -141,11 +141,32 @@ def estimer_angle_rotation(*args):
     raise NotImplementedError("Cette fonction n'est pas implémentée")
 
 
-def calculer_vecteurs_propres(*args):
-    """
-    TODO: À être implémenté par les étudiants.
-    """
-    raise NotImplementedError("Cette fonction n'est pas implémentée")
+def calculer_vecteurs_propres(image):
+    # Assumez que l'image est une matrice 2x2, comme indiqué dans l'énoncé
+    # Vous devrez adapter cela en fonction du format réel de vos images
+
+    mu_xx, mu_yy, mu_xy = calculer_moments_deuxieme_ordre(image)
+    # Calcul des coefficients de l'équation quadratique
+    a = 1
+    b = -(mu_xx + mu_yy)
+    c = mu_xx * mu_yy - mu_xy ** 2
+
+    # Calcul des valeurs propres
+    lambda1, lambda2 = np.roots([a, b, c])
+
+    # Calcul des vecteurs propres
+    v1_unnormalized = np.array([mu_xy, lambda1 - mu_xx])
+    v2_unnormalized = np.array([mu_xy, lambda2 - mu_xx])
+
+    # Normalisation des vecteurs propres
+    v1 = v1_unnormalized / np.linalg.norm(v1_unnormalized)
+    v2 = v2_unnormalized / np.linalg.norm(v2_unnormalized)
+
+    # Retourner les vecteurs propres en ordre décroissant de valeurs propres
+    if lambda1 > lambda2:
+        return [v1, v2]
+    else:
+        return [v2, v1]
 
 
 def calculer_centroide(image):

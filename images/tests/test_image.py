@@ -136,27 +136,27 @@ def test_calculer_matrice_covariance():
 
     assert np.allclose(cov_obtenue, cov_attendue)
 
-# def test_calculer_vecteurs_propres():
-#    """
-#    Test pour le calcul des vecteurs propres.
-#    """
-#
-#    # L'image de test
-#    image = np.array([[0., 1., 0.], [0., 1., 1.], [0., 0., 0.]])
-#
-#    # Calculer ces vecteurs propres
-#    v1, v2 = calculer_vecteurs_propres(image)
-#
-#    # Valeurs attendues
-#    approx_inv_racine_2 = pytest.approx(1/2 ** 0.5)
-#    approx_inv_racine_2_negatif = pytest.approx(-1/2 ** 0.5)
-#
-#    assert v1[0] == approx_inv_racine_2 and \
-#           v1[1] == approx_inv_racine_2 and \
-#           v2[0] == approx_inv_racine_2 and \
-#           v2[1] == approx_inv_racine_2_negatif
-#
-#
+def test_calculer_vecteurs_propres():
+   """
+   Test pour le calcul des vecteurs propres.
+   """
+
+   # L'image de test
+   image = np.array([[0., 1., 0.], [0., 1., 1.], [0., 0., 0.]])
+
+   # Calculer ces vecteurs propres
+   v1, v2 = calculer_vecteurs_propres(image)
+
+   # Valeurs attendues
+   approx_inv_racine_2 = pytest.approx(1/2 ** 0.5)
+   approx_inv_racine_2_negatif = pytest.approx(-1/2 ** 0.5)
+
+   assert v1[0] == approx_inv_racine_2 and \
+          v1[1] == approx_inv_racine_2 and \
+          v2[0] == approx_inv_racine_2 and \
+          v2[1] == approx_inv_racine_2_negatif
+
+
 # def test_estimer_angle_rotation():
 #    """
 #    Test pour le calcul des vecteurs propres.
