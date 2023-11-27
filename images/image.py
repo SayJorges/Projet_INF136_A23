@@ -238,4 +238,3 @@ def calculer_matrice_covariance(image):
                                   [mu_xy, mu_yy]])
 
     return covariance_matrix
-test
