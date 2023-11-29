@@ -1,7 +1,7 @@
 # Librairies générales
 import numpy as np
 import os
-
+import math
 # Librairies images
 import matplotlib.pyplot as plt
 
@@ -134,39 +134,8 @@ def appliquer_rotation(image: np.ndarray, angle_degres: float) -> np.ndarray:
     return image_tournee
 
 
-def estimer_angle_rotation(*args):
-    """
-    TODO: À être implémenté par les étudiants.
-    """
-    raise NotImplementedError("Cette fonction n'est pas implémentée")
 
 
-def calculer_vecteurs_propres(image):
-    # Assumez que l'image est une matrice 2x2, comme indiqué dans l'énoncé
-    # Vous devrez adapter cela en fonction du format réel de vos images
-
-    mu_xx, mu_yy, mu_xy = calculer_moments_deuxieme_ordre(image)
-    # Calcul des coefficients de l'équation quadratique
-    a = 1
-    b = -(mu_xx + mu_yy)
-    c = mu_xx * mu_yy - mu_xy ** 2
-
-    # Calcul des valeurs propres
-    lambda1, lambda2 = np.roots([a, b, c])
-
-    # Calcul des vecteurs propres
-    v1_unnormalized = np.array([mu_xy, lambda1 - mu_xx])
-    v2_unnormalized = np.array([mu_xy, lambda2 - mu_xx])
-
-    # Normalisation des vecteurs propres
-    v1 = v1_unnormalized / np.linalg.norm(v1_unnormalized)
-    v2 = v2_unnormalized / np.linalg.norm(v2_unnormalized)
-
-    # Retourner les vecteurs propres en ordre décroissant de valeurs propres
-    if lambda1 > lambda2:
-        return [v1, v2]
-    else:
-        return [v2, v1]
 
 
 def calculer_centroide(image):
@@ -259,3 +228,78 @@ def calculer_matrice_covariance(image):
                                   [mu_xy, mu_yy]])
 
     return covariance_matrix
+
+
+def calculer_vecteurs_propres(image):
+    # Assumez que l'image est une matrice 2x2, comme indiqué dans l'énoncé
+    # Vous devrez adapter cela en fonction du format réel de vos images
+
+    vec1,vec2 = calculer_matrice_covariance(image)
+
+    mu_xx = vec1[0]
+    mu_yy = vec2[1]
+    mu_xy = vec1[1]
+
+
+    # Calcul des coefficients de l'équation quadratique
+    a = 1
+    b = -(mu_xx + mu_yy)
+    c = mu_xx * mu_yy - mu_xy ** 2
+
+    # Calcul des valeurs propres
+    delta = b ** 2 - 4 * a * c
+
+    # Assurez-vous que le discriminant est non négatif pour éviter les erreurs de racine carrée négative
+    if delta >= 0:
+        lambda1 = (-b + np.sqrt(delta)) / (2 * a)
+        lambda2 = (-b - np.sqrt(delta)) / (2 * a)
+
+        # Calcul des vecteurs propres
+        v1_unnormalized = np.array([mu_xy, lambda1 - mu_xx])
+        v2_unnormalized = np.array([mu_xy, lambda2 - mu_xx])
+
+        # Normalisation des vecteurs propres
+        v1 = v1_unnormalized / np.linalg.norm(v1_unnormalized)
+        v2 = v2_unnormalized / np.linalg.norm(v2_unnormalized)
+
+        # Retourner les vecteurs propres en ordre décroissant de valeurs propres
+        if lambda1 > lambda2:
+            return [v1, v2]
+        else:
+            return [v2, v1]
+    else:
+        # Si le discriminant est négatif, renvoyer une valeur indicative (par exemple, None)
+        return None
+import numpy as np
+
+def estimer_angle_rotation(image):
+    """
+    Estime l'angle de rotation d'une image.
+
+    Arguments :
+    - image : Une image représentée par une matrice.
+
+    Retourne :
+    - L'angle estimé en degrés.
+    """
+
+    # Calculer les vecteurs propres
+    v_propres = calculer_vecteurs_propres(image)
+
+    if v_propres is not None:
+        # Récupérer les composantes des vecteurs propres
+
+        v1x,v2x= v_propres[0][0],v_propres[1][0]
+
+        # Calculer l'angle en radians en utilisant l'Equation 11
+        angle_radians = (math.pi/2) -abs(math.atan2(v2x,v1x))
+
+        # Convertir l'angle en radians en degrés
+        angle_degrees = angle_radians * (180/math.pi)
+
+        return angle_degrees
+    else:
+        # Gérer le cas où les vecteurs propres ne peuvent pas être calculés
+        return None
+
+
