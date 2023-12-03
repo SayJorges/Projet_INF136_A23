@@ -139,6 +139,17 @@ def appliquer_rotation(image: np.ndarray, angle_degres: float) -> np.ndarray:
 
 
 def calculer_centroide(image):
+
+    """
+    Description : Calcule le centroïde d’une image.
+
+    Arguments :
+        L’image de référence.
+
+    Retourne : Les coordonnées 𝑥 𝑐 𝑦 𝑐 du centroïde.
+
+    """
+
     x_c, y_c = 0, 0
 
     # Initialiser la somme des valeurs de l'image
@@ -167,6 +178,17 @@ def calculer_centroide(image):
 
 
 def calculer_difference(image, image_2):
+
+    """
+    Description : Calcule la somme des distances absolues entre chacun des pixels correspondants de deux images.
+
+    Arguments :
+        La première image.
+        La deuxième image.
+
+    Retourne : La distance entre les deux images.
+
+    """
     distance = 0
     for i in range(0, len(image)):
         for j in range(0, len(image[0])):
@@ -200,6 +222,16 @@ def calculer_moments_premier_ordre(image):
 
 
 def calculer_moments_deuxieme_ordre(image):
+
+    """
+    Description : Calcule les moments du premier ordre d’une image.
+
+    Arguments :
+        L’image de référence.
+
+    Retourne : Le moment en 𝑥 (c.-à-d. la coordonnée 𝑗 du tableau-image). Le moment en 𝑦 (c.-à-d. la coordonnée 𝑖 du
+        tableau-image). La « masse » de l’image.
+    """
     # Récupérer les dimensions de l'image
 
     # Initialiser les moments du deuxième ordre
@@ -220,6 +252,15 @@ def calculer_moments_deuxieme_ordre(image):
 
 
 def calculer_matrice_covariance(image):
+
+    """
+    Description : Calcule la matrice de covariance d’une image.
+
+    Arguments :
+        Une image.
+
+    Retourne : Un tableau2D numpy représentant la matrice de covariance.
+    """
     # Calculer les moments du deuxième ordre
     mu_xy, mu_xx, mu_yy = calculer_moments_deuxieme_ordre(image)
 
@@ -231,6 +272,15 @@ def calculer_matrice_covariance(image):
 
 
 def calculer_vecteurs_propres(image):
+
+    """
+    Description : Calcule les vecteurs propres d’une image.
+
+    Arguments :
+        Une image.
+
+    Retourne : Un tableau 1d numpy représentant le premier vecteur propre. Un tableau 1d numpy représentant le premier vecteur propre.
+    """
     # Assumez que l'image est une matrice 2x2, comme indiqué dans l'énoncé
     # Vous devrez adapter cela en fonction du format réel de vos images
 

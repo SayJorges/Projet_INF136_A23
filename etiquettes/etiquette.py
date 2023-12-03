@@ -3,8 +3,16 @@ from donnees.donnees import *
 from constantes import *
 import numpy as np
 from images.image import *
-
 def decouper(image_etiquette):
+
+    """
+        Description : Découpe chacun des caractères d’une étiquette.
+
+        Arguments : Une image qui correspond à une étiquette.
+
+        Retourne : Une liste qui contient les 13 caractères sous la forme d’images en tableaux NumPy.
+    """
+
     # Lire l'image d'étiquette
 
     # Assurez-vous que l'image a été chargée avec succès
@@ -26,8 +34,16 @@ def decouper(image_etiquette):
     return caract
 
 
-
 def decouper(image_etiquette):
+
+    """
+        Description : Découpe chacun des caractères d’une étiquette.
+
+        Arguments : Une image qui correspond à une étiquette.
+
+        Retourne : Une liste qui contient les 13 caractères sous la forme d’images en tableaux NumPy.
+    """
+
     # Liste pour stocker les images des étiquettes
     images_etiquettes = []
     # boucle pour separer en  13 images de 40 caracteres
