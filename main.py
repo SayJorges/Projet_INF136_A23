@@ -1,10 +1,6 @@
 # Librairies générales
-import numpy as np
-import pickle
 import random
-import os
-import matplotlib.pyplot as plt
-import math
+
 
 # Librairies pour l'affichage
 import cv2

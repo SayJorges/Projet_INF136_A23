@@ -1,10 +1,3 @@
-from images.image import *
-from etiquettes.etiquette import *
-
-from images.image import *
-from donnees.donnees import *
-from constantes import *
-
 from etiquettes.etiquette import *
 
 def identifier_caracteres_avec_distances(image_a_identifier, base_de_donnees):

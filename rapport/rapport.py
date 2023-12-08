@@ -1,11 +1,20 @@
-from algorithme.algorithme import *
-
 # Librairies internes
+from algorithme.algorithme import *
 from donnees.donnees import *
 from datetime import *
 
 
 def filtrer_ville():
+    """
+    filtre les villes en allant chercher les refrences dans les etiquettes.
+
+    Arguments:
+        'aucun'
+
+    Retourne:
+        un dictionnaire des villes
+        """
+    # Creation du dictionnaire des villes avec leur numero de references
     t_ville = {'1': 'Laval', '2': 'Longeuil', '3': 'St-Hubert', '4': 'Kitchener', '5': 'Cambridge', '6': 'Springfield',
                '7': 'Wichita', '8': 'Cleveland', '9': 'Nottingham', '0': 'Madrid'}
 
@@ -15,6 +24,7 @@ def filtrer_ville():
     total = {'Laval': 0, 'Longeuil': 0, 'St-Hubert': 0, 'Kitchener': 0, 'Cambridge': 0,
              'Springfield': 0, 'Wichita': 0, 'Cleveland': 0, 'Nottingham': 0, 'Madrid': 0}
 
+    # Boucle pour parcourir chacune des 40 etiquette
     for i in range(40):
         input_str = lire_etiquette_distances(etiquette[i], references)
         dernier_charactere = input_str[-1]
@@ -25,6 +35,15 @@ def filtrer_ville():
 
 
 def filtrer_part():
+    """
+    filtre les types (PART) en se basant sur les references.
+
+    Arguments:
+        'aucun'
+
+    Retourne:
+        un dictionnaire des types PART
+        """
     t_ville = {('P', '1'): 'Laval', ('P', '2'): 'Longeuil', ('P', '3'): 'St-Hubert', ('P', '4'): 'Kitchener',
                ('P', '5'): 'Cambridge', ('P', '6'): 'Springfield', ('P', '7'): 'Wichita', ('P', '8'): 'Cleveland',
                ('P', '9'): 'Nottingham', ('P', '0'): 'Madrid'}
@@ -48,6 +67,16 @@ def filtrer_part():
 
 
 def filtrer_assy():
+    """
+    filtre les types (ASSY) en se basant sur les references.
+
+    Arguments:
+        'aucun'
+
+    Retourne:
+        un dictionnaire des types ASSY
+        """
+
     t_ville = {('A', '1'): 'Laval', ('A', '2'): 'Longeuil', ('A', '3'): 'St-Hubert', ('A', '4'): 'Kitchener',
                ('A', '5'): 'Cambridge', ('A', '6'): 'Springfield', ('A', '7'): 'Wichita', ('A', '8'): 'Cleveland',
                ('A', '9'): 'Nottingham', ('A', '0'): 'Madrid'}
@@ -71,6 +100,16 @@ def filtrer_assy():
 
 
 def generer():
+    """
+    genere le rapport demandé avec toutes les informations.
+
+    Arguments:
+        'aucun'
+
+    Retourne:
+        rien
+        """
+
     total = filtrer_ville()
     assy = filtrer_assy()
     part = filtrer_part()

@@ -9,13 +9,7 @@ def decouper(image_etiquette):
 
         Retourne : Une liste qui contient les 13 caractères sous la forme d’images en tableaux NumPy.
     """
-
-    # Lire l'image d'étiquette
-
-    # Assurez-vous que l'image a été chargée avec succès
-    # if img is None:
-    #     raise ValueError("Impossible de charger l'image d'étiquette.")
-
+    #creation d'une liste vide
     caract = []
 
     # Extraire chaque caractère sous forme d'image en tableau NumPy

@@ -1,9 +1,7 @@
-import cv2
-import numpy as np
+
 from etiquettes.etiquette import*
 import images.image
 from constantes import *
-from main import *
 from images.image import *
 import pickle
 
