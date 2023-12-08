@@ -5,7 +5,7 @@ from donnees.donnees import *
 from images.image import *
 
 
-def filtter_ville():
+def filtrer_ville():
 
     t_ville = {'1': 'Laval', '2': 'Longeuil', '3': 'St-Hubert', '4': 'Kitchener', '5': 'Cambridge', '6': 'Springfield',
                '7': 'Witchita', '8': 'Cleveland',
@@ -24,12 +24,36 @@ def filtter_ville():
 
         print(f'{ville}')
 
-        for cle in t_ville:
-            cle += 1
+        # for cle in t_ville:
+        #     cle += 1
+        #
+        #     return cle
+        #     print(f'{cle}')
 
-            return cle
-            print(f'{cle}')
 
+def filtrer_type():
+
+    t_type = {'P': 'PART', 'A': 'ASSY'}
+
+    etiquette = charger_etiquettes()
+    references = charger_references()
+
+    for i in range(40):
+
+        input_str = lire_etiquette_distances(etiquette[i], references)
+
+        premier_charactere = input_str[0]
+        # stocker les ville
+
+        type = t_type[premier_charactere]
+
+        print(f'{type}')
+
+        # for cle in t_type:
+        # #     cle += 1
+        # #
+        # #     return cle
+        #     print(f'{cle}')
 
 
 # Initialize a dictionary to store the count of each city
@@ -80,4 +104,4 @@ def filtter_ville():
 #
 #
 if __name__ == '__main__':
-    filtter_ville()
+    filtrer_type()
