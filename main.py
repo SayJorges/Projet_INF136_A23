@@ -1,16 +1,19 @@
-
 # Librairies générales
 import numpy as np
 import pickle
 import random
 import os
+import matplotlib.pyplot as plt
+import math
 
 # Librairies pour l'affichage
 import cv2
 
 # Librairies internes
-from images.image import*
-from donnees.donnees import*
+from images.image import *
+from donnees.donnees import *
+
+
 def exemple_sauvegarde_pickle():
     """
     Exemple de sauvegarde avec la librairie pickle.
@@ -52,9 +55,7 @@ def exemple_pickle():
     # Charge le message à partir de la sauvegarde
     exemple_chargement_pickle()
 
-
 def main():
-
     # Définire les dimensions des caractères aléatoires
     hauteur = 150
     largeur = 150
@@ -66,7 +67,6 @@ def main():
     couleur = (128, 0, 0)
 
     while True:
-
         # Le caractère aléatoire à replacer
         texte = chr(random.randint(ord('A'), ord('Z')))
 
@@ -92,6 +92,14 @@ def main():
 
         # Afficher l'angle réel
         print(f'Angle de rotation: {angle_rotation_degres} degrés')
+        """
+        Affiche les vecteurs propres de l'image tournée.
+        """
+
+        # Afficher les vecteurs propres
+        plt.arrow(hauteur/2, largeur/2, 30 * math.sin(angle_rotation_degres * (math.pi/180)),30* math.cos(angle_rotation_degres * (math.pi/180)),width=0.5, color = 'b')
+        plt.arrow(hauteur/2, largeur/2, 30* math.sin((angle_rotation_degres + 90) * (math.pi/180)), 30*math.cos((angle_rotation_degres+90) * (math.pi/180)),width=0.5, color = 'r')
+
 
         # Afficher le caractère tourné
         afficher(caractere_tourne, 'Caractère tourné')
