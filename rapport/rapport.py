@@ -49,13 +49,12 @@ def filtrer_type():
 
         print(f'{type}')
 
-        # for cle in t_type:
-        # #     cle += 1
-        # #
-        # #     return cle
-        #     print(f'{cle}')
+def dict_assy():
+    compteur_laval
+    compteur_longeuil
 
 
+def dict_parts():
 # Initialize a dictionary to store the count of each city
 #city_count = {}
 
