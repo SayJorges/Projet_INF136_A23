@@ -6,7 +6,6 @@ from images.image import *
 
 
 def filtrer_ville():
-
     t_ville = {'1': 'Laval', '2': 'Longeuil', '3': 'St-Hubert', '4': 'Kitchener', '5': 'Cambridge', '6': 'Springfield',
                '7': 'Witchita', '8': 'Cleveland',
                '9': 'Nottingham', '0': 'Madrid'}
@@ -14,21 +13,16 @@ def filtrer_ville():
     etiquette = charger_etiquettes()
     references = charger_references()
 
-    for i in range(1,41):
+    result = {'Laval': 0, 'Longeuil': 0, 'St-Hubert': 0, 'Kitchener': 0, 'Cambridge': 0,
+              'Springfield': 0, 'Witchita': 0, 'Cleveland': 0, 'Nottingham': 0, 'Madrid': 0}
 
-        input_str = lire_etiquette_distances(etiquette[i],references)
-
+    for i in range(40):
+        input_str = lire_etiquette_distances(etiquette[i], references)
         dernier_charactere = input_str[-1]
-        #stocker les ville
         ville = t_ville[dernier_charactere]
-
-        print(f'{ville}')
-
-        # for cle in t_ville:
-        #     cle += 1
-        #
-        #     return cle
-        #     print(f'{cle}')
+        result[ville] += 1
+    print(f'{result}')
+    return result
 
 
 def filtrer_type():
@@ -49,26 +43,18 @@ def filtrer_type():
 
         print(f'{type}')
 
-def dict_assy():
-    compteur_laval
-    compteur_longeuil
+
+def nb_assy():
 
 
-def dict_parts():
-# Initialize a dictionary to store the count of each city
-#city_count = {}
+    ville_counts = filtrer_ville()
 
-# def nb_part():
-#     t_ville = {'1': 'Laval','2': 'Longeuil','3': 'St-Hubert','4': 'Kitchener','5': 'Cambridge','6': 'Springfield','7': 'Witchita','8': 'Cleveland',
-#                '9':'Nottingham','0': 'Madrid'}
-#     etiquette_str = lire_etiquette_centroides()
-#
-#
-# def nb_assy():
-#
-#     for i in dict:
-#         for j in range(0,5)
-#             if
+    total_assy = sum(ville_counts.values())
+    print(f'{total_assy}')
+    return {'Total_assy': total_assy}
+
+
+# def dict_parts():
 #
 #
 # def generer():
@@ -101,6 +87,6 @@ def dict_parts():
 #
 #
 #
-#
+
 if __name__ == '__main__':
-    filtrer_type()
+    filtrer_ville()
