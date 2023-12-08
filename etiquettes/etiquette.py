@@ -1,10 +1,7 @@
-import cv2
 from donnees.donnees import *
-from constantes import *
-import numpy as np
-from images.image import *
-def decouper(image_etiquette):
 
+
+def decouper(image_etiquette):
     """
         Description : Découpe chacun des caractères d’une étiquette.
 
@@ -35,7 +32,6 @@ def decouper(image_etiquette):
 
 
 def decouper(image_etiquette):
-
     """
         Description : Découpe chacun des caractères d’une étiquette.
 

@@ -9,8 +9,6 @@ import matplotlib.pyplot as plt
 from constantes import RGB_MAX
 
 
-# from donnees.donnees import *
-
 
 def charger_jpeg(chemin: str) -> np.ndarray:
     """
