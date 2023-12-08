@@ -14,27 +14,26 @@ def filtter_ville():
     etiquette = charger_etiquettes()
     references = charger_references()
 
-    for i in range(41):
+    for i in range(1,41):
 
-        input_str = lire_etiquette_centroides(etiquette[i],references)
+        input_str = lire_etiquette_distances(etiquette[i],references)
 
         dernier_charactere = input_str[-1]
+        #stocker les ville
+        ville = t_ville[dernier_charactere]
 
-        if dernier_charactere in t_ville:
+        print(f'{ville}')
 
-            associated_city = t_ville[dernier_charactere]
+        for cle in t_ville:
+            cle += 1
 
-        # Increment the count for the associated city
-            city_count[dernier_charactere] = city_count.get(dernier_charactere, 0) + 1
+            return cle
+            print(f'{cle}')
 
-            return f"The city associated with the last character '{dernier_charactere}' is: {associated_city}. " \
-               f"It has appeared {city_count[dernier_charactere]} times."
-        else:
-            return f"No city associated with the last character '{dernier_charactere}' found."
 
 
 # Initialize a dictionary to store the count of each city
-city_count = {}
+#city_count = {}
 
 # def nb_part():
 #     t_ville = {'1': 'Laval','2': 'Longeuil','3': 'St-Hubert','4': 'Kitchener','5': 'Cambridge','6': 'Springfield','7': 'Witchita','8': 'Cleveland',

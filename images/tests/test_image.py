@@ -157,19 +157,19 @@ def test_calculer_vecteurs_propres():
           v2[1] == approx_inv_racine_2_negatif
 
 
-# def test_estimer_angle_rotation():
-#    """
-#    Test pour le calcul des vecteurs propres.
-#    """
-#
-#    # L'image de test
-#    image = np.array([[0., 1., 0.], [0., 1., 1.], [1., 0., 0.]])
-#
-#    # L'angle estimé
-#    angle_obtenu = estimer_angle_rotation(image)
-#
-#    # L'angle attendu
-#    angle_attendu = 45.0
-#
-#    assert abs(angle_obtenu) == abs(angle_attendu)
-#
+def test_estimer_angle_rotation():
+   """
+   Test pour le calcul des vecteurs propres.
+   """
+
+   # L'image de test
+   image = np.array([[0., 1., 0.], [0., 1., 1.], [1., 0., 0.]])
+
+   # L'angle estimé
+   angle_obtenu = estimer_angle_rotation(image)
+
+   # L'angle attendu
+   angle_attendu = 45.0
+
+   assert abs(angle_obtenu) == abs(angle_attendu)
+
